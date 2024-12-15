@@ -10,7 +10,9 @@ services:
       - db_data:/var/lib/postgresql/data
 
   app:
-    build: app
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: aquarela_project_back_end
     ports:
       - 5555:5555
