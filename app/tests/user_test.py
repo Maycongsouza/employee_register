@@ -1,8 +1,11 @@
-import unittest
-import requests
-from faker import Faker
+try:
+    import unittest
+    import requests
+    from faker import Faker
+except Exception as error:
+    raise ImportError("Erro de biblioteca: %s" % error)
 
-BASE_URL = "http://127.0.0.1:5555"  # Atualize conforme necessário
+BASE_URL = "http://localhost:5555"  # Atualize conforme necessário
 fake = Faker()
 
 
@@ -37,7 +40,10 @@ class TestEmployeeAPI(unittest.TestCase):
         requests.delete("%s/employees/%s" % (BASE_URL, self.employee_id))
 
     def test_change_password(self):
-        """Função para testar API de alteração de senha"""
+        """
+            Função para testar API de alteração de senha
+        """
+
         new_password = fake.password()
         payload = {"passw": new_password}
 
