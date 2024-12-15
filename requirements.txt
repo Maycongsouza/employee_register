@@ -1,0 +1,11 @@
+# Project Libs
+
+fastapi
+sqlalchemy
+psycopg2-binary
+pydantic
+pytest
+uvicorn
+sqlalchemy-utils
+requests
+faker
