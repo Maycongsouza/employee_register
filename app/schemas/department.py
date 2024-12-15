@@ -1,5 +1,8 @@
-from pydantic import BaseModel
-from typing import Optional
+try:
+    from pydantic import BaseModel
+    from typing import Optional
+except Exception as error:
+    raise ImportError("Erro de biblioteca: %s" % error)
 
 
 class DepartmentBase(BaseModel):
