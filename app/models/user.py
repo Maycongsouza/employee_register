@@ -3,11 +3,12 @@ try:
     from sqlalchemy.orm import relationship
     from app.database.base import Base
 except Exception as error:
-    raise ("Erro de biblioteca: %s" % error)
+    raise ImportError("Erro de biblioteca: %s" % error)
 
 
 class User(Base):
     __tablename__ = "user"
+    _description = "Instância do modelo que se refere aos cadastros dos usuários"
 
     id = Column(
         Integer,

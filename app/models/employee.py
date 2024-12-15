@@ -1,4 +1,5 @@
 try:
+    import enum
     from sqlalchemy import Column, Integer, String, Float, ForeignKey, Boolean, Enum
     from sqlalchemy.orm import relationship
     from sqlalchemy import event
@@ -6,9 +7,9 @@ try:
     from sqlalchemy.exc import IntegrityError
     from app.database.base import Base
     from app.models.job import Job
-    import enum
 except Exception as error:
-    raise ("Erro de biblioteca: %s" % error)
+    raise ImportError("Erro de biblioteca: %s" % error)
+
 
 class StateEnum(enum.Enum):
     active = "Active"
@@ -17,6 +18,7 @@ class StateEnum(enum.Enum):
 
 class Employee(Base):
     __tablename__ = "employee"
+    _description = "Instância do modelo que se refere aos cadastros dos colaboradores."
 
     id = Column(
         Integer,
@@ -61,4 +63,9 @@ class Employee(Base):
     department = relationship(
         "Department",
         foreign_keys=[department_id]
+    )
+    is_leader = Column(
+        Boolean,
+        nullable=False,
+        default=False
     )

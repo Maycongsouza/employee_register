@@ -3,11 +3,12 @@ try:
     from sqlalchemy.orm import relationship
     from app.database.base import Base
 except Exception as error:
-    raise ("Erro de biblioteca: %s" % error)
+    raise ImportError("Erro de biblioteca: %s" % error)
 
 
 class Job(Base):
     __tablename__ = "job"
+    _description = "Instância do modelo que se refere aos cadastros dos cargos da empresa."
 
     id = Column(
         Integer,
@@ -27,6 +28,12 @@ class Job(Base):
         Integer,
         ForeignKey("department.id"),
         nullable=False
+    )
+
+    is_leadership = Column(
+        Boolean,
+        nullable=False,
+        default=False
     )
 
     department = relationship(
