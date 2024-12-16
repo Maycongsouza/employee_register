@@ -115,6 +115,7 @@ O banco foi modelado com os seguintes comportamentos e regras:
 
 - **Descrição:** Representa os usuários no ambiente da aplicação.
 - **Campos:** `id`, `login`, `passw`, `employee_id`,
+- **Chaves/Relacionamentos:**** `employee_id` é chave estrangeira para identificar a qual colaborador o usuário está associado.
 - **Relacionamentos e condições:**
     - A relação com a tabela `Employee` é opcional.
 
