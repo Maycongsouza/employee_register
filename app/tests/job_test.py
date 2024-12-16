@@ -48,10 +48,17 @@ class TestJobAPI(unittest.TestCase):
         """
             Remove os dados criados após a execução dos testes.
         """
+        
+        # Excluir todos os cargos associados ao departamento
+        if hasattr(cls, "department") and cls.department.get("id"):
+            jobs_response = requests.get("%s/jobs" % BASE_URL)
+            if jobs_response.status_code == 200:
+                jobs = jobs_response.json()
+                for job in jobs:
+                    if job["department_id"] == cls.department["id"]:
+                        requests.delete("%s/jobs/%s" % (BASE_URL, job["id"]))
 
-        if hasattr(cls, "job") and cls.job.get("id"):
-            requests.delete("%s/jobs/%s" % (BASE_URL, cls.job['id']))
-
+        # Excluir o departamento
         if hasattr(cls, "department") and cls.department.get("id"):
             requests.delete("%s/departments/%s" % (BASE_URL, cls.department['id']))
 
