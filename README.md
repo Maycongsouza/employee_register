@@ -2,11 +2,9 @@
 
 ---
 
-## 🚀 **INTRODUÇÃO**
+# 🚀 **INTRODUÇÃO**
 
-### 📂 **Estrutura do Projeto**
-
----
+## 📂 **Estrutura do Projeto**
 
 ### **Descrição dos Diretórios**
 
@@ -28,17 +26,13 @@ Contém testes unitários para garantir que as funcionalidades principais da apl
 #### **`main.py`**  
 Ponto de entrada principal da aplicação, onde o servidor FastAPI é iniciado.
 
----
-
-### 🛠️ **Tecnologias utilizadas**
+## 🛠️ **Tecnologias utilizadas**
 
 No projeto foram utilizadas as seguintes tecnologias:
 
 - **Docker e Docker Compose:** Ferramentas essenciais para criar ambientes isolados e consistentes para execução da aplicação, garantindo que a configuração seja facilmente replicável em outros ambientes.
 - **Python 3.12:** A linguagem de programação principal do projeto, seguindo as exigências descritas no desafio.
 - **PostgreSQL 15:** Foi utilizado como banco de dados principal da aplicação, seguindo as exigências descritas no desafio.
-
----
 
 ### 📚 **Bibliotecas**
 
@@ -56,9 +50,7 @@ Segue a lista de bibliotecas utilizadas:
 | **requests**           | Biblioteca para realizar chamadas HTTP.                                 |
 | **faker**              | Gerador de dados falsos para testes e simulações no banco de dados.     |
 
----
-
-### 💡 **Boas práticas**
+## 💡 **Boas práticas**
 
 Durante todo o desenvolvimento do projeto, foram aplicadas boas práticas para garantir um código limpo, legível e fácil de manter:
 
@@ -74,7 +66,7 @@ No desenvolvimento deste projeto, **o inglês foi adotado como padrão para nome
 
 ---
 
-### 🏗️ **Estruturação do banco de dados**
+## 🏗️ **Estruturação do banco de dados**
 
 O projeto utiliza uma estrutura de banco de dados relacional no **PostgreSQL**. Abaixo estão os detalhes da estrutura e relacionamentos:
 
@@ -101,14 +93,10 @@ O banco foi modelado com os seguintes comportamentos e regras:
 
 ### 📊 **Estrutura do Banco de Dados**
 
-A seguir, explicações sobre as tabelas utilizadas:
-
 #### 1. **Tabela `Department`**
 
 - **Descrição:** Contém dados sobre os departamentos da empresa.
 - **Chaves/Relacionamentos:** `leader_id` é chave estrangeira para identificar o líder do departamento.
-
----
 
 #### 2. **Tabela `Employee`**
 
@@ -117,29 +105,22 @@ A seguir, explicações sobre as tabelas utilizadas:
   - Cada colaborador está associado a um cargo e a um departamento.
   - O campo `is_leader` indica se o colaborador é o líder de seu respectivo departamento.
 
----
-
 #### 3. **Tabela `Job`**
 
 - **Descrição:** Contém informações sobre os cargos dos colaboradores.
 - **Regra importante:** Somente um colaborador pode ocupar um cargo de liderança.
 
----
-
 #### 4. **Tabela `User`**
 
 - **Descrição:** Representa os usuários no ambiente da aplicação. A relação com a tabela `Employee` é opcional.
-
----
 
 **Observação Importante:**  
 A definição de liderança foi estruturada de forma a garantir que apenas uma pessoa possa atuar como líder para cada departamento, conforme lógica implementada no banco de dados através de **triggers e funções** PostgreSQL.
 
 ---
 
----
 
-### 📄 **Configuração do Arquivo `.env`**
+## 📄 **Configuração do Arquivo `.env`**
 
 O arquivo `.env` contém variáveis de ambiente essenciais para configurar o banco de dados PostgreSQL no ambiente Docker. Abaixo estão os parâmetros utilizados:
 
@@ -158,6 +139,8 @@ O arquivo `.env` é carregado pelo Docker Compose para configurar o ambiente de 
 ## 🛠️ **COMO USAR**
 
 ### **Instalação do Docker e do Docker Compose na máquina**
+
+#### **SE VOCÊ JÁ TEM O DOCKER E DOCKER COMPOSE INSTALADO, PULE ESSA ETAPA!**
 
 Para instalar o **Docker** e o **Docker Compose** em distribuições Linux, siga os passos:
 
@@ -197,7 +180,7 @@ docker-compose --version
 
 Depois da instalação do Docker, copie o arquivo .env para alocar as variáveis de ambiente dentro do ambiente Docker com o comando:
 ```bash
-sudo apt update && sudo apt upgrade -y
+cp example.env .env
 ```
 
 #### **2. Executar o ambiente com Docker Compose:**
@@ -208,11 +191,31 @@ docker-compose up
 ```
 **OBS:** Pode ser necessário o sudo para executar o docker e docker-compose.
 
+#### **2. Executar o ambiente com Docker Compose:**
+
+Para realizar os testes e validar se está tudo "ok":
+```bash
+docker exec -it <nome_ou_id_do_container> pytest app/tests/
+```
+
+Também pode ser executado arquivo por arquivo, com os comandos:
+```bash
+docker exec -it <nome_ou_id_do_container> pytest app/tests/department_test.py
+```
+```bash
+docker exec -it <nome_ou_id_do_container> pytest app/tests/employee_test.py
+```
+```bash
+docker exec -it <nome_ou_id_do_container> pytest app/tests/job_test.py
+```
+```bash
+docker exec -it <nome_ou_id_do_container> pytest app/tests/user_test.py
+```
 ### **Em casos de erros**
 
-**Durante os testes, pode ocorrer do Docker "se perder" e o app ser executado antes que o banco de dados esteja pronto. Se isso acontecer:**
+**Na primeira execução do aplicativo, pode ocorrer do Docker "se perder" e o app ser executado antes que o banco de dados esteja pronto. Se isso acontecer:**
 ```bash
-docker-compose down
+docker-compose stop
 ```
 
 Em seguida, novamente:
