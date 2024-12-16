@@ -11,6 +11,9 @@ fake = Faker()
 
 class TestEmployeeAPI(unittest.TestCase):
     def setUp(self):
+        """
+            Configuração inicial da classe para criar um colaborador apenas uma vez.
+        """
 
         # Dados iniciais
         self.new_employee_data = {
@@ -35,7 +38,10 @@ class TestEmployeeAPI(unittest.TestCase):
         self.user_id = response.json().get("id")
 
     def tearDown(self):
-        # Exclusão do usuário e do colaborador após a realização dos testes
+        """
+            Exclusão do usuário e do colaborador após a realização dos testes
+        """
+
         requests.delete("%s/users/%s" % (BASE_URL, self.user_id))
         requests.delete("%s/employees/%s" % (BASE_URL, self.employee_id))
 
