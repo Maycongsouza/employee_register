@@ -177,21 +177,30 @@ sudo apt install docker-compose -y
 docker --version
 docker-compose --version
 ```
-**OBS:** Pode ser necessário o sudo.
+**OBS:** Pode ser necessário o sudo e/ou também dependendo da estalação os comandos podem ser sem o hífem:
+```bash
+docker --version
+docker compose --version
+```
 
 ---
 
 ## ✅ **Execução**
 
 
-#### **1. Configurar o ambiente:**
+### **1. Configurar o ambiente:**
 
 Depois da instalação do Docker, faça uma cópia dentro da própria pasta do projeto, do arquivo .env para alocar as variáveis de ambiente dentro do ambiente Docker com o comando:
 ```bash
 cp example.env .env
 ```
 
-#### 🚀 **2. Executar o ambiente com Docker Compose:**
+### 🚀 **2. Executar o ambiente com Docker Compose:**
+
+#### **OBS:** Pode ser necessário executar os comandos abaixo sem o hífen. Exemplo:
+```bash
+docker compose up
+```
 
 Navegue até a pasta do projeto onde está localizado o arquivo docker-compose.yml e execute:
 ```bash
@@ -199,7 +208,7 @@ docker-compose up
 ```
 **OBS:** Pode ser necessário o sudo para executar o docker e docker-compose.
 
-#### 📋 **3. Testes:**
+### 📋 **3. Testes:**
 
 Descubra o ID ou nome do container:
 ```bash
