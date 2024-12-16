@@ -7,6 +7,8 @@ except Exception as error:
     raise ImportError("Erro de biblioteca: %s" % error)
 
 _logger = logging.getLogger(__name__)
+
+# Esse time sleep evita que o app tente criar as tabelas antes do banco de dados estar pronto.
 time.sleep(5)
 
 app = FastAPI()
