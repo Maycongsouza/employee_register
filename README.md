@@ -100,7 +100,7 @@ O banco foi modelado com os seguintes comportamentos e regras:
 
 - **Descrição:** Representa os colaboradores da organização.
 - **Campos:** `id`, `name`, `last_name`, `register_number`, `job_id`, `department_id`, `salary`,` status`, `is_leader` 
-- **Relacionamentos e condições:**
+- **Chaves/Relacionamentos:** `job_id` é chave estrangeira para identificar o cargo do colaborador. E `department_id` para identificar o departamento.
   - Cada colaborador está associado a um cargo e a um departamento.
   - O campo `is_leader` indica se o colaborador é o líder de seu respectivo departamento.
 
@@ -108,6 +108,7 @@ O banco foi modelado com os seguintes comportamentos e regras:
 
 - **Descrição:** Contém informações sobre os cargos dos colaboradores.
 - **Campos:** `id`, `name`, `code`, `department_id`, `is_leadership`
+- **Chaves/Relacionamentos:**** `department_id` é chave estrangeira para identificar a qual departamento o cargo pertence.
 - **Regra importante:** Somente um colaborador pode ocupar um cargo de liderança.
 
 #### 4. **Tabela `User`**
