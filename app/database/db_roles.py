@@ -4,6 +4,9 @@ try:
     from sqlalchemy.sql import text
 except Exception as error:
     raise ImportError("Erro de biblioteca: %s" % error)
+
+# Configuração básica do logger para exibir INFO e outros níveis
+logging.basicConfig(level=logging.INFO)
 _logger = logging.getLogger(__name__)
 
 

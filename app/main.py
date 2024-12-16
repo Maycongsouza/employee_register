@@ -6,10 +6,12 @@ try:
 except Exception as error:
     raise ImportError("Erro de biblioteca: %s" % error)
 
+# Configuração básica do logger para exibir INFO e outros níveis
+logging.basicConfig(level=logging.INFO)
 _logger = logging.getLogger(__name__)
 
 # Esse time sleep evita que o app tente criar as tabelas antes do banco de dados estar pronto.
-time.sleep(5)
+time.sleep(10)
 
 app = FastAPI()
 
@@ -18,6 +20,7 @@ app.include_router(employee.router, prefix="/employees", tags=["Employees"])
 app.include_router(department.router, prefix="/departments", tags=["Department"])
 app.include_router(job.router, prefix="/jobs", tags=["Job"])
 app.include_router(user.router, prefix="/users", tags=["User"])
+_logger.info("Rotas estabelecidas!")
 
 @app.get("/")
 def read_root():

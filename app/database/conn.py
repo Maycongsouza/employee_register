@@ -13,6 +13,8 @@ try:
 except Exception as error:
     raise ImportError("Erro de biblioteca: %s" % error)
 
+# Configuração básica do logger para exibir INFO e outros níveis
+logging.basicConfig(level=logging.INFO)
 _logger = logging.getLogger(__name__)
 
 POSTGRES_USER = os.getenv("POSTGRES_USER")
