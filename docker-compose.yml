@@ -8,6 +8,8 @@ services:
       - 5432:5432
     volumes:
       - db_data:/var/lib/postgresql/data
+    env_file:
+      - .env
     environment:
       - POSTGRES_USER=$POSTGRES_USER
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
@@ -25,6 +27,8 @@ services:
       - ./:/app
     links:
       - db
+    env_file:
+      - .env
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
