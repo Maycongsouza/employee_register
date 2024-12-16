@@ -125,7 +125,8 @@ A definição de liderança foi estruturada de forma a garantir que apenas uma p
 
 ## 📄 **Configuração do Arquivo `.env`**
 
-O arquivo `.env` contém variáveis de ambiente essenciais para configurar o banco de dados PostgreSQL no ambiente Docker. Abaixo estão os parâmetros utilizados:
+O arquivo `example.env` contém variáveis de ambiente essenciais para configurar o banco de dados PostgreSQL no ambiente Docker. 
+Você pode mudar os parâmetros e adequar o aruivo da maneira que preferir. Abaixo estão os parâmetros utilizados:
 
 | **Chave**               | **Valor**               | **Descrição**                                                                |
 |-------------------------|-------------------------|--------------------------------------------------------------------------------|
@@ -237,4 +238,4 @@ docker-compose up db
 uvicorn app.main:app --host 0.0.0.0 --port 5555 --reload
 ```
 
-**Em caso de erro com as variáveis ambiente que estão no arquivo `env.`, acesso o `conn.py` e defina manualmente**
+**Em caso de erro com as variáveis ambiente que estão no arquivo `.env`, acesso o `conn.py` e defina manualmente**
