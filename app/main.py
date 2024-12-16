@@ -1,5 +1,4 @@
 try:
-    import time
     import logging
     from fastapi import FastAPI
     from app.routers import employee, department, job, user
@@ -9,9 +8,6 @@ except Exception as error:
 # Configuração básica do logger para exibir INFO e outros níveis
 logging.basicConfig(level=logging.INFO)
 _logger = logging.getLogger(__name__)
-
-# Esse time sleep evita que o app tente criar as tabelas antes do banco de dados estar pronto.
-time.sleep(10)
 
 app = FastAPI()
 

@@ -1,4 +1,5 @@
 try:
+    import time
     import os
     import logging
     from app.database.base import Base
@@ -17,8 +18,8 @@ except Exception as error:
 logging.basicConfig(level=logging.INFO)
 _logger = logging.getLogger(__name__)
 
-POSTGRES_USER = os.getenv("POSTGRES_USER")
-POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+# Esse time sleep evita que o app tente criar as tabelas antes do banco de dados estar pronto.
+time.sleep(5)
 POSTGRES_DB = os.getenv("POSTGRES_DB", "human_resources_db")
 POSTGRES_HOST = os.getenv("POSTGRES_HOST")
 POSTGRES_PORT = os.getenv("POSTGRES_PORT")
