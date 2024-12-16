@@ -184,7 +184,7 @@ docker-compose --version
 
 #### **1. Configurar o ambiente:**
 
-Depois da instalação do Docker, copie o arquivo .env para alocar as variáveis de ambiente dentro do ambiente Docker com o comando:
+Depois da instalação do Docker, faça uma cópia dentro da própria pasta do projeto, do arquivo .env para alocar as variáveis de ambiente dentro do ambiente Docker com o comando:
 ```bash
 cp example.env .env
 ```
