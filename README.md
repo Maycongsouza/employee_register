@@ -66,7 +66,8 @@ No desenvolvimento deste projeto, **o inglês foi adotado como padrão para nome
 
 ---
 
-## 🏗️ **Estruturação do banco de dados**
+
+## 🏗️ **Estrutura do Banco de Dados**
 
 O projeto utiliza uma estrutura de banco de dados relacional no **PostgreSQL**. Abaixo estão os detalhes da estrutura e relacionamentos:
 
@@ -77,9 +78,7 @@ Os principais modelos/tabelas definem as entidades e seus relacionamentos:
 3. **Job**: Representa os cargos da empresa. Determina se um colaborador pode ser líder.
 4. **User**: Representa os usuários da aplicação, podendo estar vinculados a um colaborador ou serem independentes.
 
----
-
-### 🏢 **Relacionamentos e regras do banco**
+### 🏢 **Regras do banco**
 
 O banco foi modelado com os seguintes comportamentos e regras:
 
@@ -89,18 +88,18 @@ O banco foi modelado com os seguintes comportamentos e regras:
    - **`enforce_leadership_rules`:** Garante que somente uma pessoa pode atuar como líder de um departamento.
    - **`sync_is_leader`:** Atualiza o campo `is_leader` no colaborador ao alterar o campo `leader_id` no departamento.
 
----
-
-### 📊 **Estrutura do Banco de Dados**
+### 📊 **Estrutura de Tabelas e Relacionamentos**
 
 #### 1. **Tabela `Department`**
 
 - **Descrição:** Contém dados sobre os departamentos da empresa.
-- **Chaves/Relacionamentos:** `leader_id` é chave estrangeira para identificar o líder do departamento.
+- **Campos:** `id`, `name`, `leader_id`
+- **Chaves/Relacionamentos:** `leader_id` é chave estrangeira para identificar o líder do departamento (employee).
 
 #### 2. **Tabela `Employee`**
 
 - **Descrição:** Representa os colaboradores da organização.
+- **Campos:** `id`, `name`, `last_name`, `register_number`, `job_id`, `department_id`, `salary`,` status`, `is_leader` 
 - **Relacionamentos e condições:**
   - Cada colaborador está associado a um cargo e a um departamento.
   - O campo `is_leader` indica se o colaborador é o líder de seu respectivo departamento.
@@ -108,11 +107,15 @@ O banco foi modelado com os seguintes comportamentos e regras:
 #### 3. **Tabela `Job`**
 
 - **Descrição:** Contém informações sobre os cargos dos colaboradores.
+- **Campos:** `id`, `name`, `code`, `department_id`, `is_leadership`
 - **Regra importante:** Somente um colaborador pode ocupar um cargo de liderança.
 
 #### 4. **Tabela `User`**
 
-- **Descrição:** Representa os usuários no ambiente da aplicação. A relação com a tabela `Employee` é opcional.
+- **Descrição:** Representa os usuários no ambiente da aplicação.
+- **Campos:** `id`, `login`, `passw`, `employee_id`,
+- **Relacionamentos e condições:**
+    - A relação com a tabela `Employee` é opcional.
 
 **Observação Importante:**  
 A definição de liderança foi estruturada de forma a garantir que apenas uma pessoa possa atuar como líder para cada departamento, conforme lógica implementada no banco de dados através de **triggers e funções** PostgreSQL.
@@ -135,6 +138,7 @@ O arquivo `.env` contém variáveis de ambiente essenciais para configurar o ban
 O arquivo `.env` é carregado pelo Docker Compose para configurar o ambiente de execução.
 
 ---
+
 
 ## 🛠️ **COMO USAR**
 
