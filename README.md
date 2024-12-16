@@ -179,7 +179,8 @@ docker-compose --version
 
 ---
 
-### **Execução**
+## ✅ **Execução**
+
 
 #### **1. Configurar o ambiente:**
 
@@ -188,7 +189,7 @@ Depois da instalação do Docker, copie o arquivo .env para alocar as variáveis
 cp example.env .env
 ```
 
-#### **2. Executar o ambiente com Docker Compose:**
+#### 🚀 **2. Executar o ambiente com Docker Compose:**
 
 Navegue até a pasta do projeto onde está localizado o arquivo docker-compose.yml e execute:
 ```bash
@@ -196,7 +197,12 @@ docker-compose up
 ```
 **OBS:** Pode ser necessário o sudo para executar o docker e docker-compose.
 
-#### **2. Executar o ambiente com Docker Compose:**
+#### 📋 **3. Testes:**
+
+Descubra o ID ou nome do container:
+```bash
+docker ps
+```
 
 Para realizar os testes e validar se está tudo "ok":
 ```bash
@@ -216,7 +222,7 @@ docker exec -it <nome_ou_id_do_container> pytest app/tests/job_test.py
 ```bash
 docker exec -it <nome_ou_id_do_container> pytest app/tests/user_test.py
 ```
-### **Em casos de erros**
+### ⚠️ **Em casos de erros**
 
 **Na primeira execução do aplicativo, pode ocorrer do Docker "se perder" e o app ser executado antes que o banco de dados esteja pronto. Se isso acontecer:**
 ```bash
