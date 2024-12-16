@@ -223,7 +223,15 @@ docker exec -it <nome_ou_id_do_container> pytest app/tests/user_test.py
 docker-compose stop
 ```
 
-Em seguida, novamente:
+Pode ser necessário reiniciar a database, para isso:
+```bash
+docker-compose stop
+```
+```bash
+docker compose exec db dropdb -U admin human_resources_db
+```
+
+Em seguida, tente novamente:
 ```bash
 docker-compose up
 ```

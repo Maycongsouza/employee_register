@@ -1,4 +1,5 @@
 try:
+    import time
     import logging
     from fastapi import FastAPI
     from app.routers import employee, department, job, user
@@ -6,6 +7,8 @@ except Exception as error:
     raise ImportError("Erro de biblioteca: %s" % error)
 
 _logger = logging.getLogger(__name__)
+time.sleep(5)
+
 app = FastAPI()
 
 
