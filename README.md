@@ -31,12 +31,12 @@ Ponto de entrada principal da aplicação, onde o servidor FastAPI é iniciado.
 No projeto foram utilizadas as seguintes tecnologias:
 
 - **Docker e Docker Compose:** Ferramentas essenciais para criar ambientes isolados e consistentes para execução da aplicação, garantindo que a configuração seja facilmente replicável em outros ambientes.
-- **Python 3.12:** A linguagem de programação principal do projeto, seguindo as exigências descritas no desafio.
-- **PostgreSQL 15:** Foi utilizado como banco de dados principal da aplicação, seguindo as exigências descritas no desafio.
+- **Python 3.12:** A linguagem de programação principal do projeto.
+- **PostgreSQL 15:** Foi utilizado como banco de dados principal da aplicação.
 
 ### 📚 **Bibliotecas**
 
-Segue a lista de bibliotecas utilizadas:
+Lista de bibliotecas utilizadas:
 
 | **Biblioteca**        | **Breve descrição**                                                     |
 |------------------------|-------------------------------------------------------------------------|
@@ -234,24 +234,6 @@ docker exec -it <nome_ou_id_do_container> pytest app/tests/job_test.py
 docker exec -it <nome_ou_id_do_container> pytest app/tests/user_test.py
 ```
 ### ⚠️ **Em casos de erros**
-
-**Na primeira execução do aplicativo, pode ocorrer do Docker "se perder" e o app ser executado antes que o banco de dados esteja pronto. Se isso acontecer:**
-```bash
-docker-compose stop
-```
-
-Pode ser necessário reiniciar a database, para isso:
-```bash
-docker-compose stop
-```
-```bash
-docker compose exec db dropdb -U admin human_resources_db
-```
-
-Em seguida, tente novamente:
-```bash
-docker-compose up
-```
 
 **Caso haja algum erro na execução do aplicativo pelo Docker, você pode tentar subir apenas o PostgreSQL da seguinte forma:**
 ```bash
