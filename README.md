@@ -2,8 +2,6 @@
 
 ---
 
-# 🚀 **INTRODUÇÃO**
-
 ## 📂 **Estrutura do Projeto**
 
 ### **Descrição dos Diretórios**
