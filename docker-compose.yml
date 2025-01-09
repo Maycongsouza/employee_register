@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
     image: postgres:15
-    container_name: postgres_container_app_aquarela_project
+    container_name: postgres_container_app
     ports:
       - 5432:5432
     volumes:
@@ -16,7 +16,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: aquarela_project_back_end
+    container_name: project_back_end_employee_register
     ports:
       - 5555:5555
     depends_on:
